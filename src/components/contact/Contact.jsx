@@ -1,5 +1,5 @@
 import { BsPersonFill, BsTelephoneFill } from "react-icons/bs";
-const Contact = ({ name, number }) => {
+const Contact = ({ id, name, number, onDelete }) => {
   return (
     <div>
       <li>
@@ -10,7 +10,9 @@ const Contact = ({ name, number }) => {
         <BsTelephoneFill />
         {number}
       </li>
-      <button type="submit">Delete</button>
+      <button type="button" onClick={() => onDelete(id)}>
+        Delete
+      </button>
     </div>
   );
 };

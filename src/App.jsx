@@ -44,12 +44,16 @@ const App = () => {
     actions.resetForm();
   };
 
+  const deleteContact = (contactId) => {
+    setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== contactId));
+  };
+
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm setContacts={setContacts} addContact={addContact} handleSubmit={handleSubmit} fieldValidation={fieldValidation} />
       <SearchBox value={searchQuery} onChange={handleSearch} />
-      <ContactList contacts={filterContacts} />
+      <ContactList contacts={filterContacts} deleteContact={deleteContact} />
     </div>
   );
 };
