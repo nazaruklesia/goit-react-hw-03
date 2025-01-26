@@ -4,15 +4,16 @@ import ContactList from "./components/contactList/ContactList";
 import SearchBox from "./components/searchBox/SearchBox";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
+import "./App.css";
 
 const fieldValidation = Yup.object().shape({
   name: Yup.string()
-    .min(3, "Too Short! Name must be at least 3 characters.")
-    .max(50, "Too Long! Name must be 50 characters or less.")
+    .min(3, "Too Short! Name must be longer than 3 characters.")
+    .max(50, "Too Long! Name must not exceed 50 characters.")
     .required("Name is required"),
   number: Yup.string()
-    .min(2, "Too Short! Number must be at least 3 characters.")
-    .max(50, "Too Long! Number must be 50 characters or less.")
+    .min(2, "Too Short! Number must be longer than 3 characters.")
+    .max(50, "Too Long! Number must not exceed 50 characters.")
     .required("Number is required!")
     .trim()
     .matches(/^[0-9()\-\s]+$/, "Only numbers, dashes, spaces, and parentheses are allowed"),
