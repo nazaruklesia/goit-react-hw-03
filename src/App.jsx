@@ -3,8 +3,20 @@ import ContactForm from "./components/contactForm/ContactForm";
 import ContactList from "./components/contactList/ContactList";
 import SearchBox from "./components/searchBox/SearchBox";
 import { nanoid } from "nanoid";
-
 import * as Yup from "yup";
+
+const fieldValidation = Yup.object().shape({
+  name: Yup.string()
+    .min(3, "Too Short! Name must be at least 3 characters.")
+    .max(50, "Too Long! Name must be 50 characters or less.")
+    .required("Name is required"),
+  number: Yup.string()
+    .min(2, "Too Short! Number must be at least 3 characters.")
+    .max(50, "Too Long! Number must be 50 characters or less.")
+    .required("Number is required!")
+    .trim()
+    .matches(/^[0-9()\-\s]+$/, "Only numbers, dashes, spaces, and parentheses are allowed"),
+});
 
 const App = () => {
   const [contacts, setContacts] = useState([
@@ -23,7 +35,7 @@ const App = () => {
 
   const addContact = (newContact) => {
     const newId = nanoid();
-    const updateContacts = [...contacts, { id: newId, name: newContact.name, number: newContact.number }];
+    const updateContacts = [...contacts, { id: newId, ...newContact }];
     setContacts(updateContacts);
   };
 
@@ -31,11 +43,6 @@ const App = () => {
     addContact(value);
     actions.resetForm();
   };
-
-  const fieldValidation = Yup.object().shape({
-    name: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
-    number: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required("Required"),
-  });
 
   return (
     <div>

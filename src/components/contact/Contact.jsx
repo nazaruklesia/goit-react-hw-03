@@ -1,8 +1,15 @@
+import { BsPersonFill, BsTelephoneFill } from "react-icons/bs";
 const Contact = ({ name, number }) => {
   return (
     <div>
-      <li>{name}</li>
-      <li>{number}</li>
+      <li>
+        <BsPersonFill />
+        {name}
+      </li>
+      <li>
+        <BsTelephoneFill />
+        {number}
+      </li>
       <button type="submit">Delete</button>
     </div>
   );
