@@ -1,33 +1,60 @@
+.container {
+  max-width: 1440px;
+  background-color: #f9f9f9;
+  padding: 20px 100px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.forma {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid rgba(0, 153, 76, 1);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
 .error {
   color: rgb(217, 75, 75);
   font-size: 0.875rem;
   margin-top: 0.25rem;
 }
-.container {
+
+
+.contact,
+.input {
   display: flex;
-  flex-direction: column;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-  gap: 20px;
-  max-width: 800px;
-  min-width: 300px;
-}
-.contact {
-  display: flex;
-  padding-left: 10;
+  justify-content: start;
+  align-items: start;
   font-weight: bold;
 }
+
+
+.btnAdd {
+  width: 110px;
+  background-color: rgba(0, 153, 76, 1);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 10px;
+  transition: background 0.3s ease;
+}
+
 .input {
   padding: 10px;
   font-size: 1rem;
-  border: 1px solid #155617;
+  border: 1px solid rgba(0, 153, 76, 1);
   border-radius: 4px;
   outline: none;
-  max-width: 800px;
   min-width: 400px;
+
 }
 
 .input:focus {

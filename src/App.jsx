@@ -4,7 +4,7 @@ import ContactList from "./components/contactList/ContactList";
 import SearchBox from "./components/searchBox/SearchBox";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
-import "./App.css";
+import s from "./App.module.css";
 
 const fieldValidation = Yup.object().shape({
   name: Yup.string()
@@ -59,11 +59,22 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Phonebook</h1>
-      <ContactForm setContacts={setContacts} addContact={addContact} handleSubmit={handleSubmit} fieldValidation={fieldValidation} />
-      <SearchBox value={searchQuery} onChange={handleSearch} />
-      <ContactList contacts={filterContacts} deleteContact={deleteContact} />
+    <div className={s.container}>
+      <h1 className={s.title}>Phonebook</h1>
+      <div className={s.rightSide}>
+        <SearchBox value={searchQuery} onChange={handleSearch} />
+      </div>
+      <div className={s.content}>
+        <ContactForm setContacts={setContacts} addContact={addContact} handleSubmit={handleSubmit} fieldValidation={fieldValidation} />
+      </div>
+      {contacts.length === 0 ? (
+        <p className={s.emptyMessage}>
+          The phone book is empty.
+          Add your first contact.
+        </p>
+      ) : (
+        <ContactList contacts={filterContacts} deleteContact={deleteContact} />
+      )}
     </div>
   );
 };

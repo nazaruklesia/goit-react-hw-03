@@ -6,7 +6,7 @@ const ContactForm = ({ handleSubmit, fieldValidation }) => {
   return (
     <Formik initialValues={{ name: "", number: "" }} validationSchema={fieldValidation} onSubmit={handleSubmit}>
       <Form>
-        <div className={s.container}>
+        <div className={s.forma}>
           <div>
             <label className={s.contact} htmlFor="name">
               Name
@@ -21,7 +21,7 @@ const ContactForm = ({ handleSubmit, fieldValidation }) => {
             <Field className={s.input} name="number" id="number" placeholder="Enter phone number" />
             <ErrorMessage className={s.error} name="number" component="span" />
           </div>
-          <button type="submit">Add Contact</button>
+          <button className={s.btnAdd} type="submit">Add Contact</button>
         </div>
       </Form>
     </Formik>
